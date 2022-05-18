@@ -47,7 +47,6 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
-            //connection.commit();
             System.out.println("User " + name + " was added to table");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -60,7 +59,6 @@ public class UserDaoJDBCImpl implements UserDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(removeUserByIdSQL)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
-            //connection.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
 
@@ -87,10 +85,10 @@ public class UserDaoJDBCImpl implements UserDao {
         return users;
     }
 
-        public void cleanUsersTable() {
+    public void cleanUsersTable() {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("DELETE FROM users");
-            //connection.commit();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
