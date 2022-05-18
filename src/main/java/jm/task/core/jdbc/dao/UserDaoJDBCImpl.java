@@ -24,7 +24,6 @@ public class UserDaoJDBCImpl implements UserDao {
                     "    lastName varchar(60) not null," +
                     "    age      tinyint     not null" +
                     ")");
-            //connection.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +33,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
             statement.execute("DROP TABLE IF EXISTS users");
-            //connection.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -88,7 +86,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("DELETE FROM users");
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
